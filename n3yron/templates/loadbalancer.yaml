@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: n3yron-svc-lb
+  labels:
+    env  : dev
+    owner: OleksandrDovnich
+spec:
+  selector:
+    app: n3yron   # Selecting PODS with those Labels
+  ports:
+    - name      : app-listener
+      protocol  : TCP
+      port      : 8080  # Port on Load Balancer
+      targetPort: 8080  # Port on POD
+  type: LoadBalancer
+
+# In case to check 8080
