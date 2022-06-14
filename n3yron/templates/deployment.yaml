@@ -1,0 +1,21 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: n3yron
+  labels:
+    app : n3yron
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: n3yron
+  template:
+    metadata:
+      labels:
+        app: n3yron   # Service will look for those PODS Labels!!!
+    spec:
+      containers:
+        - name : n3yron
+          image: kukudu/n3yron:3
+          ports:
+            - containerPort: 8080
